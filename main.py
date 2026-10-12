@@ -26,7 +26,9 @@ def citire_lista() -> list:
     """
     sir = []
     n = citire_lungime_lista()
-    for i in range(n):
+    primul = citire_numar("Introduceti primul element din lista: ")
+    sir.append(primul)
+    for i in range(1, n):
         element = citire_numar(f"Introduceti cel de-al {i+1}-lea element din lista: ")
         sir.append(element)
     return sir
@@ -51,16 +53,27 @@ def relativ_prime(sir: list) -> list:
     """
         O functie care gaseste secventa de lungime maxima in care oricare doua elemente consec sunt prime intre ele
     """
-    sir_max = [sir[0]] 
-    sir_cur = [sir[0]]
-    for i in range(1, len(sir)): # se porneste cu al doilea elem pt ca sirul curent e initializat cu primul element
+    secv_max = []
+    lg_cur = 1
+    lg_max = 1
+    left = 0
+    right = 0
+    left_max = 0
+    right_max = 0
+    for i in range(1, len(sir)): 
         if cmmdc(sir[i-1], sir[i]) == 1:
-            sir_cur.append(sir[i])
+            right += 1
+            lg_cur += 1
         else:
-            sir_cur = [sir[i]]
-        if len(sir_cur) > len(sir_max):
-            sir_max = sir_cur.copy()
-    return sir_max
+            left = i
+            right = i
+        if lg_cur > lg_max:
+            right_max = right
+            left_max = left
+               
+    for el in range(left_max, right_max + 1):
+        secv_max.append(sir[el])
+    return secv_max
 
 # sir test = [2, 2, 3, 3, 1]
 # rezultat = [2, 2]
@@ -69,16 +82,27 @@ def egale(sir: list) -> list:
     """
         O functie care determina secventa de lungime maxima in care toate elementele sunt egale.
     """
-    sir_max = [sir[0]] 
-    sir_cur = [sir[0]]
+    secv_max = []
+    lg_cur = 1
+    lg_max = 1
+    left = 0
+    right = 0
+    left_max = 0
+    right_max = 0
     for i in range(1, len(sir)): 
         if sir[i-1] == sir[i]:
-            sir_cur.append(sir[i])
+            right += 1
+            lg_cur += 1
         else:
-            sir_cur = [sir[i]]
-        if len(sir_cur) > len(sir_max):
-            sir_max = sir_cur.copy()
-    return sir_max
+            left = i
+            right = i
+        if lg_cur > lg_max:
+            right_max = right
+            left_max = left
+                   
+    for el in range(left_max, right_max + 1):
+        secv_max.append(sir[el])
+    return secv_max
 
 def meniu():
     """
