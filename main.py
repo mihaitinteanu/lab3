@@ -67,9 +67,11 @@ def relativ_prime(sir: list) -> list:
         else:
             left = i
             right = i
+            lg_cur = 1
         if lg_cur > lg_max:
             right_max = right
             left_max = left
+            lg_max = lg_cur
                
     for el in range(left_max, right_max + 1):
         secv_max.append(sir[el])
@@ -96,9 +98,11 @@ def egale(sir: list) -> list:
         else:
             left = i
             right = i
+            lg_cur = 1
         if lg_cur > lg_max:
             right_max = right
             left_max = left
+            lg_max = lg_cur
                    
     for el in range(left_max, right_max + 1):
         secv_max.append(sir[el])
