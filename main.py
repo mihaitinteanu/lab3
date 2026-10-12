@@ -128,6 +128,7 @@ def run():
         optiune = input("Alegeti o optiune: ")
         if optiune == '1':
             lista = citire_lista()
+            print(f"Lista curenta este {lista}.")
         elif optiune == '2':
             if not lista:
                 print("Lista este goala! Selectati prima optiune pentru a pune valori in lista dvs.")
